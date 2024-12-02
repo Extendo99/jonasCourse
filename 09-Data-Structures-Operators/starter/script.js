@@ -273,58 +273,69 @@ const restaurant = {
   },
 };
 
-// // Spread Operator
+// Spread Operator//////////////////////////////////////////////////////////////////////////////////////////////////
 // const arr = [7, 8, 9];
-// // Bad
+// Bad
 // const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
 // console.log(badNewArr);
-// // Good
+// Good
 // const newArr = [1, 2, ...arr];
 // console.log(newArr);
 
-// // Invidual
-// // Bad
+// Invidual
+// Bad
 // console.log(1, 2, 7, 8, 9);
-// // Good
+// Good
 // console.log(...newArr);
 
-// // New Array and Add New Elements to old Array
+// New Array and Add New Elements to old Array
 // const newMenu = [...restaurant.mainMenu, `Gnocci`];
 // console.log(newMenu);
 
-// // Copy Array
+// Copy Array
 // const mainMenuCopy = [...restaurant.mainMenu];
 
-// // Join 2 Arrays
+// Join 2 Arrays
 // const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
 // console.log(menu);
 
-// // Iterables: Arrays, Strings, Maps, Sets NOT OBJECTS
+// Iterables: Arrays, Strings, Maps, Sets NOT OBJECTS
 // const str = `Jonas`;
 // const letters = [...str, ` `, `S.`];
 // console.log(letters);
 // console.log(...str);
 
-// // Real World Example with Function
+// Real World Example with Function
 // const ingredients = [
 //   prompt(`Let's make pasta! Ingredient 1?`),
 //   prompt(`Ingredient 2?`),
 //   prompt(`Ingredient 3?`),
 // ];
-// // Bad
+// Bad
 // restaurant.orderPasta(ingredients[0], ingredients[1], ingredients[2]);
-// // Good
+// Good
 // restaurant.orderPasta(...ingredients);
 
-// // Objects
+// Objects
 // const newRestaurant = { foundedIn: 1998, ...restaurant, founder: `Guiseppe` };
 // console.log(newRestaurant);
-// // Object Copy
+// Object Copy
 
 // const restaurantCopy = {...restaurant};
 // restaurantCopy.name = `Ristorante Roma`;
 // console.log(restaurantCopy.name);
 // console.log(restaurant.name);
+
+// Assigment #3////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//3.1
+// const bookAuthors = [...books[0].author, ...books[1].author];
+// console.log(bookAuthors);
+//3.2
+// function spellWord(string) {
+//   console.log(...string);
+// }
+// spellWord("JavaScript");
 
 // Destructuring Objects///////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -332,7 +343,7 @@ const restaurant = {
 // const { name, openingHours, categories } = restaurant;
 // console.log(name, openingHours, categories);
 
-// // Different name
+// Different name
 // const {
 //   name: restaurantName,
 //   openingHours: hours,
@@ -340,11 +351,11 @@ const restaurant = {
 // } = restaurant;
 // console.log(restaurantName, hours, tags);
 
-// // Default Values
+// Default Values
 // const { menu = [], starterMenu: starters = [] } = restaurant;
 // console.log(menu, starters);
 
-// // Mutating Variables
+// Mutating Variables
 // let a = 111;
 // let b = 999;
 // const obj = { a: 23, b: 7, c: 14 };
@@ -352,13 +363,13 @@ const restaurant = {
 // ({ a, b } = obj);
 // console.log(a, b);
 
-// // Nested Objects
+// Nested Objects
 // const {
 //   fri: { open: o, close: c },
 // } = openingHours;
 // console.log(o, c);
 
-// // Calling Function
+// Calling Function
 
 // restaurant.orderDelivery({
 //   time: "23:30",
@@ -378,15 +389,15 @@ const restaurant = {
 // const { title, author, ISBN } = books[0];
 // console.log(title, author, ISBN);
 
-// // 2.2
+// 2.2
 // const { keywords: tags } = books[0];
 // console.log(tags);
 
-// // 2.3
+// 2.3
 // const { language, programmingLanguage = `unknown` } = books[6];
 // console.log([programmingLanguage]);
 
-// // 2.4
+// 2.4
 // let bookTitle = "unknown";
 // let bookAuthor = "unknown";
 // ({ title: bookTitle, author: bookAuthor } = books[0]);
@@ -420,38 +431,38 @@ const restaurant = {
 // console.log(x, y, z);
 // console.log(arr);
 
-// // Skip Second Position
+// Skip Second Position
 // let [main, , secondary] = restaurant.categories;
 // console.log(main, secondary);
 
-// // Switching Variables
+// Switching Variables
 // [main, secondary] = [secondary, main];
 // console.log(main, secondary);
 
-// // Receive 2 return values from a function
+// Receive 2 return values from a function
 // const [starter, mainCourse] = restaurant.order(2, 0);
 // console.log(starter, mainCourse);
 
-// // Nested Arrays
+// Nested Arrays
 // const nested = [2, 4, [5, 6]];
 // const [i, , [j, k]] = nested;
 // console.log(i, j, k);
 
-// // Default Values
+// Default Values
 // const [p = 1, q = 1, r = 1] = [8, 9];
 // console.log(p, q, r);
 
-// // Assigment #1 ///////////////////////////////////////////////////////////////////////////////////////////////////////
+// Assigment #1 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// // 1.1
+// 1.1
 // const [firstBook, secondBook] = books;
 // console.log(firstBook, secondBook);
 
-// // 1.2
+// 1.2
 // const [, , thirdBook] = books;
 // console.log(thirdBook);
 
-// // 1.3
+// 1.3
 // const ratings = [
 //   ["rating", 4.19],
 //   ["ratingsCount", 144584],
@@ -459,7 +470,7 @@ const restaurant = {
 // const [[, rating], [, ratingcount]] = ratings;
 // console.log(rating, ratingcount);
 
-// // 1.4
+// 1.4
 // const ratingStars = [63405, 1808];
 // const [fiveStarRatingCount, oneStarRatingCount, threeStarRating = 0] =
 //   ratingStars;
