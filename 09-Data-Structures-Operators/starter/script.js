@@ -276,9 +276,115 @@ const restaurant = {
     console.log(otherIngredients);
   },
 };
+// Logical Assigment Operators/////////////////////////////////////////////////////////////////////////////////////////
+
+// const rest1 = {
+//   name: `Capri`,
+//   // numGuests: 20,
+//   numGuests: 0,
+// };
+
+// const rest2 = {
+//   name: `La Piazza`,
+//   owner: `Giovanni Rossi`,
+// };
+
+// OR Assigment////////////////////////////////////////////
+// If doesn't exist set default 10
+// rest1.numGuests ||= 10;
+// rest2.numGuests ||= 10;
+
+// Nulish Assigment Operator (null, undefined)/////////////
+// rest1.numGuests ??= 10;
+// rest2.numGuests ??= 10;
+
+// AND Assigment Operator//////////////////////////////////
+// Set if Exist
+// rest1.owner &&= `<ANONYMOUS>`;
+// rest2.owner &&= `<ANONYMOUS>`;
+
+// Assigment #7
+
+// // 7.1
+// for (let index = 0; index < books.length; index++) {
+//   books[index].edition ||= 1;
+// }
+
+// 7.2
+// for (let index = 0; index < books.length; index++) {
+//   books[index].highlighted &&= !books[index].thirdParty.goodreads.rating < 4.2;
+// }
+
+// Nulish Operator/////////////////////////////////////////////////////////////////////////////////////////////////////
+// Problem with 0 because its false value. This will print 10
+// restaurant.numGuests = 0;
+// const guests = restaurant.numGuests || 10;
+// console.log(guests);
+
+// Nullish: null and undefined NOT INCLUDE 0 or ""
+// const guestCorrect = restaurant.numGuests ?? 10;
+// console.log(guestCorrect);
+
+// Assigment #6////////////////////////////////////////////////////////////////////////////////////////////////////////
+// for (let index = 0; index < books.length; index++) {
+//   books[index].onlineContent ??
+//     console.log(
+//       `"${books[index].title}" provides no data about its online content`
+//     );
+// }
+// Short Circuiting OR ||//////////////////////////////////////////////////////////////////////////////////////////////
+// If the first ONE is TRUE, PRINT it,
+// console.log(3 || `Jonas`);
+// console.log(true || 0);
+// if NOT, print the LAST one even if it is false.
+// console.log(`` || `Jonas`);
+// console.log(undefined || null);
+
+// Print First True Value
+// console.log(undefined || 0 || `` || `Hello` || 23 || null); // First True Value is Hello
+
+// If numguest doesn't exist print default value 10
+// Bad
+// const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+// console.log(guests1);
+// Good
+// const guests2 = restaurant.numGuests || 10;
+// console.log(guests2);
+
+// Short Circuiting AND &&/////////////////////////////////////////////////////////////////////////////////////////////
+// If the first ONE is False, PRINT it,
+// console.log(0 && `Jonas`);
+// if NOT, print the LAST one even if it is True.
+// console.log(7 && `Jonas`);
+
+// Print First False Value
+// console.log(`Hello` && 23 && null && `jonas`);
+
+// Practical Example
+// Bad
+// if (restaurant.orderPizza) {
+//   restaurant.orderPizza(`mushrooms`, `spinach`);
+// }
+// Good
+//If restaurant.orderPizza is not False and Exist Call Function
+// restaurant.orderPizza && restaurant.orderPizza(`mushrooms`, `spinach`)
+
+// Assigment #5
+// 5.1
+// function hasExamplesInJava(books) {
+//   console.log(books.programmingLanguage === `Java` || `no data available`);
+//   // return books.programmingLanguage === `Java` || `no data available`;
+// }
+// hasExamplesInJava(books[0]);
+// hasExamplesInJava(books[1]);
+
+// 5.2
+// for (let i = 0; i < books.length; i++) {
+//   books[i].onlineContent &&
+//     console.log(`"${books[i].title}" provides online content`);
+// }
 
 // Rest Operator///////////////////////////////////////////////////////////////////////////////////////////////////////
-
 // 1) Destructuring
 // Arrays
 // const [a, b, ...others] = [1, 2, 3, 4, 5];
@@ -314,7 +420,7 @@ const restaurant = {
 // restaurant.orderPizza(`Mushrooms`, `onion`, `olives`, `spinach`);
 // restaurant.orderPizza(`Mushrooms`);
 
-// Assigment #4
+// Assigment #4////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 4.1
 // const [mainKeyword, ...rest] = books[0].keywords;
 
