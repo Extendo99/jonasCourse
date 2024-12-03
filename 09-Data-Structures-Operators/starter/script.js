@@ -282,6 +282,89 @@ const restaurant = {
     console.log(otherIngredients);
   },
 };
+// Looping Objects
+// Property Names
+// const properties = Object.keys(openingHours);
+// console.log(properties);
+
+// let openStr = `We are open on ${properties.length} days: `;
+// for (const day of properties) {
+//   openStr += `${day}, `;
+// }
+// console.log(openStr);
+
+// // Property Values
+// const values = Object.values(openingHours);
+// console.log(values);
+
+// // Names + Values = Entries
+// // Entire Object
+// const entries = Object.entries(openingHours);
+// // console.log(entries);
+
+// // [key, value]
+// for (const [key, { open, close }] of entries) {
+//   console.log(`On ${key} we open at ${open} and close at ${close}`);
+// }
+
+// Assigment #11
+// 11.1
+
+// const entries = [];
+// for (const key of Object.keys(books[0].thirdParty.goodreads)) {
+//   entries.push([key]);
+// }
+// console.log(entries);
+
+// // 11.2
+// for (const [index, value] of Object.values(
+//   books[0].thirdParty.goodreads
+// ).entries()) {
+//   entries[index].push(value);
+// }
+
+// // 11.3
+// const entries2 = Object.entries(books[0].thirdParty.goodreads);
+
+// // 11.4
+// console.log(entries);
+// console.log(entries2);
+
+// Optional Chaining///////////////////////////////////////////////////////////////////////////////////////////////////
+// Bad
+// if (restaurant.openingHours && restaurant.openingHours.mon)
+//   console.log(restaurant.openingHours.mon.open);
+
+// // Good With Chaining
+// // Check if mon exist
+// console.log(restaurant.openingHours.mon?.open);
+
+// // Check if mon and openingHours exist
+// console.log(restaurant.openingHours?.mon?.open);
+
+// // Example
+// const days = [`mon`, `tue`, `wed`, `thu`, `fri`, `sat`, `sun`];
+
+// for (const day of days) {
+//   // ?? because open at 0. If openinghourse doesnt exist print closed
+//   const open = restaurant.openingHours[day]?.open ?? `closed`;
+//   console.log(`On ${day}, we open at ${open}`);
+// }
+
+// // Methods
+// console.log(restaurant.order?.(0, 1) ?? `Method does not exist`);
+// console.log(restaurant.orderRisotto?.(0, 1) ?? `Method does not exist`);
+
+// // Arrays
+// const users = [{ name: `Jonas`, email: `hello@jonas.io` }];
+// console.log(users[0]?.name ?? `User array empty`);
+
+// Assigment #10///////////////////////////////////////////////////////////////////////////////////////////////////////
+// function getFirstKeyword(book) {
+//   return book.keywords?.[0];
+// }
+
+// getFirstKeyword(books[0]);
 
 // Assigment #9////////////////////////////////////////////////////////////////////////////////////////////////////////
 //8.1
@@ -341,48 +424,91 @@ const restaurant = {
 // for (const [i, author] of allAuthors.entries())
 //   console.log(`${i + 1}: ${author}`);
 
-// Challenge #1////////////////////////////////////////////////////////////////////////////////////////////////////////
-// const game = {
-//   team1: "Bayern Munich",
-//   team2: "Borrussia Dortmund",
-//   players: [
-//     [
-//       "Neuer",
-//       "Pavard",
-//       "Martinez",
-//       "Alaba",
-//       "Davies",
-//       "Kimmich",
-//       "Goretzka",
-//       "Coman",
-//       "Muller",
-//       "Gnarby",
-//       "Lewandowski",
-//     ],
-//     [
-//       "Burki",
-//       "Schulz",
-//       "Hummels",
-//       "Akanji",
-//       "Hakimi",
-//       "Weigl",
-//       "Witsel",
-//       "Hazard",
-//       "Brandt",
-//       "Sancho",
-//       "Gotze",
-//     ],
-//   ],
-//   score: "4:0",
-//   scored: ["Lewandowski", "Gnarby", "Lewandowski", "Hummels"],
-//   date: "Nov 9th, 2037",
-//   odds: {
-//     team1: 1.33,
-//     x: 3.25,
-//     team2: 6.5,
-//   },
-// };
+// Challenge #1 && #2//////////////////////////////////////////////////////////////////////////////////////////////////
+const game = {
+  team1: "Bayern Munich",
+  team2: "Borrussia Dortmund",
+  players: [
+    [
+      "Neuer",
+      "Pavard",
+      "Martinez",
+      "Alaba",
+      "Davies",
+      "Kimmich",
+      "Goretzka",
+      "Coman",
+      "Muller",
+      "Gnarby",
+      "Lewandowski",
+    ],
+    [
+      "Burki",
+      "Schulz",
+      "Hummels",
+      "Akanji",
+      "Hakimi",
+      "Weigl",
+      "Witsel",
+      "Hazard",
+      "Brandt",
+      "Sancho",
+      "Gotze",
+    ],
+  ],
+  score: "4:0",
+  scored: ["Lewandowski", "Gnarby", "Lewandowski", "Hummels"],
+  date: "Nov 9th, 2037",
+  odds: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5,
+  },
+};
 
+// Challenge #2////////////////////////////////////////////////////////////////////////////////////////////////////////
+// 1. Loop over the game.scored array and print each player name to the console, along with the goal number (Example: "Goal 1: Lewandowski"
+// for (const [i, player] of game.scored.entries()) {
+//   console.log(`Goal ${i + 1}: ${player}`);
+// }
+// 2. Use a loop to calculate the average odd and log it to the console (We already studied how to calculate averages, you can go check if you don't remember
+// Create Array
+// let oddArr = [];
+// for (odd of Object.values(game.odds)) {
+//   oddArr.push(odd);
+// }
+// console.log(oddArr);
+// // Sum
+// let sumOdd = 0;
+// for (let index = 0; index < oddArr.length; index++) {
+//   sumOdd += oddArr[index];
+// }
+// // Average
+// let averageOdd = sumOdd / oddArr.length;
+// console.log(averageOdd);
+
+//  3. Print the 3 odds to the console, but in a nice formatted way, exactly like this: Odd of victory Bayern Munich: 1.33
+// Odd of draw: 3.25 Odd of victory Borrussia Dortmund: 6.5 Get the team names directly from the game object, don't hardcode them
+// (except for "draw"). Hint: Note how the odds and the game objects have the same property names �
+
+// console.log(
+//   `Odd of Victory ${game.team1}: ${game.odds.team1}\nOdd of Draw ${game.odds.x}\nOdd of Victory ${game.team2}: ${game.odds.team2}`
+// );
+
+// for (const [team, odd] of Object.entries(game.odds)) {
+//   const teamStr = team === `x` ? `draw` : `victory ${game[team]}`;
+//   console.log(`Odd of ${teamStr} ${odd}`);
+// }
+
+// 4. Bonus: Create an object called 'scorers' which contains the names of the players who scored as properties, and the number of goals as the value. In this
+// game, it will look like this: { Gnarby: 1, Hummels: 1, Lewandowski: 2}
+
+// const scorers = {};
+// for (const player of game.scored) {
+//   scorers[player] ? scorers[player]++ : (scorers[player] = 1);
+// }
+
+// Challenge #1////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 1. Create one player array for each team (variables 'players1' and 'players2')
 // const [players1, players2] = game.players;
 
