@@ -282,7 +282,270 @@ const restaurant = {
     console.log(otherIngredients);
   },
 };
-// Looping Objects
+// Challenge #3
+const gameEvents = new Map([
+  [17, "⚽ GOAL"],
+  [36, "� Substitution"],
+  [47, "⚽ GOAL"],
+  [61, "� Substitution"],
+  [64, "� Yellow card"],
+  [69, "� Red card"],
+  [70, "� Substitution"],
+  [72, "� Substitution"],
+  [76, "⚽ GOAL"],
+  [80, "⚽ GOAL"],
+  [92, "� Yellow card"],
+]);
+
+//1. Create an array 'events' of the different game events that happened (no duplicates)
+//My Solution
+// const eventsArr = [];
+// for (const [key, value] of gameEvents) {
+//   eventsArr.push(value);
+// }
+// const eventsSet = new Set(eventsArr);
+// const uniqueEventsArr = [...eventsSet];
+// console.log(uniqueEventsArr);
+
+// Jonas Solution
+// const events = [...new Set(gameEvents.values())];
+// console.log(events);
+
+// 2. After the game has finished, is was found that the yellow card from minute 64
+//   was unfair. So remove this event from the game events log.
+// gameEvents.delete(64);
+// console.log(gameEvents);
+
+// 3. Compute and log the following string to the console: "An event happened, on
+//   average, every 9 minutes" (keep in mind that a game has 90 minutes)
+// const time = [...gameEvents.keys()].pop();
+// console.log(
+//   `An event happened, on average, every ${time / gameEvents.size} minutes`
+// );
+
+// 4. Loop over 'gameEvents' and log each element to the console, marking
+//   whether it's in the first half or second half (after 45 min) of the game, like this:
+//   [FIRST HALF] 17: ⚽ GOAL
+// MY SOLUTION
+// for (const [key, value] of gameEvents) {
+//   if (key <= 45) {
+//     console.log(`[FIRST HALF] ${key}: ${value}`);
+//   } else {
+//     console.log(`[SECOND HALF] ${key}: ${value}`);
+//   }
+// }
+
+// GPT SOLUTION
+// for (const [key, value] of gameEvents) {
+//   const half = key <= 45 ? "[FIRST HALF]" : "[SECOND HALF]";
+//   console.log(`${half} ${key}: ${value}`);
+// }
+
+// Data Structure Pros and Cons////////////////////////////////////////////////////////////////////////////////////////
+// Simple List
+// Array > Ordered with Duplicate. Manipulate
+// Sets > Unique Value. Remove Duplicate
+
+// Key/Value Pairs  >
+// Objects > Easy to access and write. Function and Methods
+// Maps > Keys any data type. Keys when not strings
+
+// Maps Iteration//////////////////////////////////////////////////////////////////////////////////////////////////////
+// const question = new Map([
+//   [`question`, `What is the best programming language in the world?`],
+//   [1, `C`],
+//   [2, `Java`],
+//   [3, `JavaScript`],
+//   [`correct`, 3],
+//   [true, `Correct`],
+//   [false, `Try Again`],
+// ]);
+// console.log(question);
+
+// Convert Object to Map
+// console.log(Object.entries(openingHours));
+// const hoursMap = new Map(Object.entries(openingHours));
+// console.log(hoursMap);
+
+// Iteration
+// Quiz App
+// console.log(question.get(`question`));
+// for (const [key, value] of question) {
+//   if (typeof key === `number`) console.log(`Answear ${key}: ${value}`);
+// }
+// Prompt Answer
+// const answer = Number(prompt(`Your answer`));
+// console.log(answer);
+
+// My Solution
+// if (answer === 3) {
+//   console.log(question.get(true));
+// } else console.log(question.get(false));
+// Jonas Solution
+// console.log(question.get(question.get(`correct`) === answer));
+
+// Convert Map to Array
+// console.log([...question]);
+// console.log(questions.entries());
+// console.log([...question.keys()]);
+// console.log([...question.values()]);
+
+// Assigment #14
+// 14.1
+// const firstBookMap = new Map(Object.entries(books[0]));
+//console.log(firstBookMap);
+
+//14.2
+// for (const [key, value] of firstBookMap) {
+//   if (typeof value === `number`) console.log(key);
+// }
+// Maps////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// const rest = new Map();
+// rest.set(`name`, `Classico Italiano`);
+// rest.set(1, `Firenze, Italy`);
+// console.log(rest.set(2, `Lisbon, Portugal`));
+
+// Create Map
+// rest
+//   .set(`categories`, ["Italian", "Pizzeria", "Vegetarian", "Organic"])
+//   .set(`open`, 11)
+//   .set(`close`, 23)
+//   .set(true, `We are open :D`)
+//   .set(false, `We are close ):`);
+
+// Get elements from map
+// console.log(rest.get(`name`));
+// console.log(rest.get(true));
+
+// Example
+// const time = 8;
+// console.log(rest.get(time > rest.get(`open`) && time < rest.get(`close`)));
+
+//Check Elements
+// console.log(rest.has(`categories`));
+
+// Delete Elements
+// rest.delete(2);
+// console.log(rest);
+
+// Size Map
+// console.log(rest.size);
+
+//Remove All Elements
+// rest.clear();
+
+// Array in Map
+// const arr = [1, 2];
+// rest.set(arr, `Test`);
+// console.log(rest.get(arr));
+
+// Object in Map
+// rest.set(document.querySelector(`h1`), `Heading`);
+// console.log(rest);
+
+// Assigments #13
+// 13.1
+// const bookMap = new Map([
+//   ["title", "Clean Code"],
+//   ["author", "Robert C. Martin"],
+// ]);
+// 13.2
+// bookMap.set(`pages`, 464);
+
+// 13.3
+// console.log(`"${bookMap.get(`title`)}" by ${bookMap.get(`author`)}`);
+
+// 13.4
+// console.log(bookMap.size);
+
+// 13.5
+// if (bookMap.has(`author`)) {
+//   console.log("The author of the book is known");
+// }
+
+// Sets////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Unique Values
+// const ordersSet = new Set([
+//   `Pasta`,
+//   `Pizza`,
+//   `Pizza`,
+//   `Risotto`,
+//   `Pasta`,
+//   `Pizza`,
+// ]);
+
+// console.log(ordersSet);
+
+// Size of Set
+// console.log(ordersSet.size);
+
+// Check Elements
+// console.log(ordersSet.has(`Pizza`));
+// console.log(ordersSet.has(`Bread`));
+
+// Add new elements
+// ordersSet.add(`Garlic Bread`);
+// ordersSet.add(`Garlic Bread`);
+
+// Delete Elements
+// ordersSet.delete(`Risotto`);
+
+// Delete all elements
+// ordersSet.clear();
+
+// Sets are Iterable so we can loop
+// for (const order of ordersSet) console.log(order);
+
+// Main Use Case Remove Duplicate
+// const staff = [`Waiter`, `Chef`, `Waiter`, `Manager`, `Chef`, `Waiter`];
+
+// Make Unique Array
+// const staffUnique = [...new Set(staff)];
+// console.log(staffUnique);
+
+// Array Unique Size
+// console.log(
+//   new Set([`Waiter`, `Chef`, `Waiter`, `Manager`, `Chef`, `Waiter`]).size
+// );
+
+// Letters Counter
+// console.log(new Set(`jonasschmedtmann`).size);
+
+// Assigment #12
+
+// 12.1
+// const allKeywords = [];
+// for (let index = 0; index < books.length; index++) {
+//   allKeywords.push(...books[index].keywords);
+// }
+// console.log(allKeywords);
+// 12.1 Jonas Solution
+// for (const book of books) {
+//   allKeywords.push(...book.keywords);
+// }
+
+// 12.2
+// const allKeywordsUnique = new Set(allKeywords);
+// console.log(allKeywordsUnique);
+// 12.2 Jonas Solution
+//const uniqueKeywords = new Set(allKeywords);
+
+// 12.3
+// allKeywordsUnique.add(`coding`);
+// allKeywordsUnique.add(`science`);
+
+// 12.4
+// allKeywordsUnique.delete(`business`);
+
+// 12.5
+// const uniqueKeywordsArr = [...allKeywordsUnique];
+// console.log(uniqueKeywordsArr);
+
+// 12.6
+// allKeywordsUnique.clear();
+// console.log(allKeywordsUnique);
+
+//Looping Objects/////////////////////////////////////////////////////////////////////////////////////////////////////
 // Property Names
 // const properties = Object.keys(openingHours);
 // console.log(properties);
@@ -293,21 +556,21 @@ const restaurant = {
 // }
 // console.log(openStr);
 
-// // Property Values
+// Property Values
 // const values = Object.values(openingHours);
 // console.log(values);
 
-// // Names + Values = Entries
-// // Entire Object
+// Names + Values = Entries
+// Entire Object
 // const entries = Object.entries(openingHours);
-// // console.log(entries);
+// console.log(entries);
 
-// // [key, value]
+// [key, value]
 // for (const [key, { open, close }] of entries) {
 //   console.log(`On ${key} we open at ${open} and close at ${close}`);
 // }
 
-// Assigment #11
+// Assigment #11///////////////////////////////////////////////////////////////////////////////////////////////////////
 // 11.1
 
 // const entries = [];
@@ -316,17 +579,17 @@ const restaurant = {
 // }
 // console.log(entries);
 
-// // 11.2
+// 11.2
 // for (const [index, value] of Object.values(
 //   books[0].thirdParty.goodreads
 // ).entries()) {
 //   entries[index].push(value);
 // }
 
-// // 11.3
+// 11.3
 // const entries2 = Object.entries(books[0].thirdParty.goodreads);
 
-// // 11.4
+// 11.4
 // console.log(entries);
 // console.log(entries2);
 
@@ -335,14 +598,14 @@ const restaurant = {
 // if (restaurant.openingHours && restaurant.openingHours.mon)
 //   console.log(restaurant.openingHours.mon.open);
 
-// // Good With Chaining
-// // Check if mon exist
+// Good With Chaining
+// Check if mon exist
 // console.log(restaurant.openingHours.mon?.open);
 
-// // Check if mon and openingHours exist
+// Check if mon and openingHours exist
 // console.log(restaurant.openingHours?.mon?.open);
 
-// // Example
+// Example
 // const days = [`mon`, `tue`, `wed`, `thu`, `fri`, `sat`, `sun`];
 
 // for (const day of days) {
@@ -351,11 +614,11 @@ const restaurant = {
 //   console.log(`On ${day}, we open at ${open}`);
 // }
 
-// // Methods
+// Methods
 // console.log(restaurant.order?.(0, 1) ?? `Method does not exist`);
 // console.log(restaurant.orderRisotto?.(0, 1) ?? `Method does not exist`);
 
-// // Arrays
+// Arrays
 // const users = [{ name: `Jonas`, email: `hello@jonas.io` }];
 // console.log(users[0]?.name ?? `User array empty`);
 
@@ -380,7 +643,7 @@ const restaurant = {
 //   [bookData[2][0]]: bookData[2][1],
 // };
 
-// //8.2
+//8.2
 // const pages = 880;
 
 // const newBook2 = {
@@ -425,46 +688,46 @@ const restaurant = {
 //   console.log(`${i + 1}: ${author}`);
 
 // Challenge #1 && #2//////////////////////////////////////////////////////////////////////////////////////////////////
-const game = {
-  team1: "Bayern Munich",
-  team2: "Borrussia Dortmund",
-  players: [
-    [
-      "Neuer",
-      "Pavard",
-      "Martinez",
-      "Alaba",
-      "Davies",
-      "Kimmich",
-      "Goretzka",
-      "Coman",
-      "Muller",
-      "Gnarby",
-      "Lewandowski",
-    ],
-    [
-      "Burki",
-      "Schulz",
-      "Hummels",
-      "Akanji",
-      "Hakimi",
-      "Weigl",
-      "Witsel",
-      "Hazard",
-      "Brandt",
-      "Sancho",
-      "Gotze",
-    ],
-  ],
-  score: "4:0",
-  scored: ["Lewandowski", "Gnarby", "Lewandowski", "Hummels"],
-  date: "Nov 9th, 2037",
-  odds: {
-    team1: 1.33,
-    x: 3.25,
-    team2: 6.5,
-  },
-};
+// const game = {
+//   team1: "Bayern Munich",
+//   team2: "Borrussia Dortmund",
+//   players: [
+//     [
+//       "Neuer",
+//       "Pavard",
+//       "Martinez",
+//       "Alaba",
+//       "Davies",
+//       "Kimmich",
+//       "Goretzka",
+//       "Coman",
+//       "Muller",
+//       "Gnarby",
+//       "Lewandowski",
+//     ],
+//     [
+//       "Burki",
+//       "Schulz",
+//       "Hummels",
+//       "Akanji",
+//       "Hakimi",
+//       "Weigl",
+//       "Witsel",
+//       "Hazard",
+//       "Brandt",
+//       "Sancho",
+//       "Gotze",
+//     ],
+//   ],
+//   score: "4:0",
+//   scored: ["Lewandowski", "Gnarby", "Lewandowski", "Hummels"],
+//   date: "Nov 9th, 2037",
+//   odds: {
+//     team1: 1.33,
+//     x: 3.25,
+//     team2: 6.5,
+//   },
+// };
 
 // Challenge #2////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 1. Loop over the game.scored array and print each player name to the console, along with the goal number (Example: "Goal 1: Lewandowski"
@@ -478,12 +741,12 @@ const game = {
 //   oddArr.push(odd);
 // }
 // console.log(oddArr);
-// // Sum
+// Sum
 // let sumOdd = 0;
 // for (let index = 0; index < oddArr.length; index++) {
 //   sumOdd += oddArr[index];
 // }
-// // Average
+// Average
 // let averageOdd = sumOdd / oddArr.length;
 // console.log(averageOdd);
 
