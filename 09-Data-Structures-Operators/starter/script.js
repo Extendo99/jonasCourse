@@ -282,20 +282,252 @@ const restaurant = {
     console.log(otherIngredients);
   },
 };
-// Challenge #3
-const gameEvents = new Map([
-  [17, "⚽ GOAL"],
-  [36, "� Substitution"],
-  [47, "⚽ GOAL"],
-  [61, "� Substitution"],
-  [64, "� Yellow card"],
-  [69, "� Red card"],
-  [70, "� Substitution"],
-  [72, "� Substitution"],
-  [76, "⚽ GOAL"],
-  [80, "⚽ GOAL"],
-  [92, "� Yellow card"],
-]);
+
+// String #2///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Lower Case
+// console.log(airline.toLowerCase());
+// Uppercase
+// console.log(airline.toUpperCase());
+
+// Fix Capitalize in Name
+// const passenger = `jOnAS`;
+// const passengerLower = passenger.toLowerCase(); // jonas
+// const passengerCorrect =
+//   passengerLower[0].toUpperCase() + passengerLower.slice(1); // Jonas
+// console.log(passengerCorrect);
+
+// Comparing emails
+// const email = `hello@jonas.io`;
+// const loginEmail = `  Hello@Jonas.Io \n`;
+// const normalizedEmail = loginEmail.toLowerCase().trim();
+// console.log(email === normalizedEmail);
+
+// Replacing
+// const priceGB = `288,97£`;
+// const priceUS = priceGB.replace(`£`, `$`).replace(`,`, `.`);
+// console.log(priceUS);
+
+// const announcement = `All passenger come to boarding door 23. Boarding door 23!`;
+// Replace the first occurrence
+// console.log(announcement.replace(`door`, `gate`));
+// Replace all occurrences of Door
+// console.log(announcement.replaceAll(`door`, `gate`));
+
+// Old way for Replace All
+// console.log(announcement.replaceAll(/door/g, `gate`));
+
+// Booleans
+// Include Method
+// const plane = `Airbus A320neo`;
+// console.log(plane.includes(`A320`));
+// console.log(plane.includes(`Boeing`));
+
+// Start With
+// console.log(plane.startsWith(`Air`));
+// Ends With
+// if (plane.startsWith(`Airbus`) && plane.endsWith(`neo`)) {
+//   console.log(`Part of the NEW Airbus family`);
+// }
+
+// Practice Exercise
+// const checkBaggage = function (items) {
+//   const baggage = items.toLowerCase();
+//   if (baggage.includes(`knife` || baggage.includes(`gun`))) {
+//     console.log(`You are not allowed on board`);
+//   } else {
+//     console.log(`Welcome aboard!`);
+//   }
+// };
+// checkBaggage(`I have a laptop, some Food and a pocket Knife`);
+// checkBaggage(`Socks and camera`);
+// checkBaggage(`Got some snacks and a gun for protection`);
+
+// Assigment #16///////////////////////////////////////////////////////////////////////////////////////////////////////
+// 16.1
+// My Solution
+// function normalizeAuthorName(author) {
+// Lower Case
+//   const authorLower = author.toLowerCase();
+
+// Delete Contributor
+//   const cleanAuthor = authorLower.replace(`(contributor)`, ``);
+
+// Uppercase First Name
+//   const nameCapitalize = cleanAuthor[0].toUpperCase() + cleanAuthor.slice(1);
+
+// Uppercase Last Name
+// First Letter Uppercase
+//   const lastNameFirstLetterCapitalize = nameCapitalize
+//     .slice(nameCapitalize.indexOf(` `) + 1, nameCapitalize.indexOf(` `) + 2)
+//     .toUpperCase();
+
+// Full Last Name
+//   const fullLastName =
+//     lastNameFirstLetterCapitalize +
+//     nameCapitalize.slice(nameCapitalize.indexOf(` `) + 2);
+// Full Name
+//   const fullName =
+//     nameCapitalize.slice(0, nameCapitalize.indexOf(` `)) + " " + fullLastName;
+//   console.log(fullName);
+// }
+// normalizeAuthorName(`kOnrAd lADa (Contributor)`);
+
+// Jonas Solution
+// function normalizeAuthorName(author) {
+//   author = author.trim();
+//   console.log(author);
+
+// const firstName = author.slice(0, author.indexOf(" "));
+
+// let lastName = "";
+// if (author.indexOf(" ") === author.lastIndexOf(" ")) {
+//   lastName = author.slice(author.indexOf(" ") + 1, author.length);
+// } else {
+//   lastName = author.slice(author.indexOf(" ") + 1, author.lastIndexOf(" "));
+// }
+
+// const capitalizedFirstName =
+//   firstName[0].toUpperCase() + firstName.slice(1).toLowerCase();
+// const capitalizedLastName =
+//   lastName[0].toUpperCase() + lastName.slice(1).toLowerCase();
+
+// return capitalizedFirstName + " " + capitalizedLastName;
+// }
+// normalizeAuthorName(`kOnrAd lADa (Contributor)`);
+
+// 16.2
+// const newBookTitle = books[1].title.replace(`Programs`, `Software`);
+// console.log(newBookTitle);
+
+// 16.3
+// function logBookTheme(booktitle) {
+//   const lowerBook = booktitle.toLowerCase();
+//   if (lowerBook.startsWith(`computer`)) {
+//     console.log(`This book is about computers`);
+//   } else if (
+//     lowerBook.includes(`algorithms`) &&
+//     lowerBook.includes(`structures`)
+//   ) {
+//     console.log(`This book is about algorithms and data structures`);
+//   } else if (
+//     lowerBook.endsWith(`system`) ||
+//     (lowerBook.endsWith(`systems`) && !lowerBook.includes(`operating`))
+//   ) {
+//     console.log(
+//       `This book is about some systems, but definitely not about operating systems`
+//     );
+//   }
+// }
+
+// logBookTheme(`system and systems`);
+// logBookTheme(`algorithms and structures`);
+// logBookTheme(`computer`);
+
+// String #1 - Slice Method////////////////////////////////////////////////////////////////////////////////////////////
+// const airline = `TAP Air Portugal`;
+// const plane = `A320`;
+
+// Letter on position
+// console.log(plane[0]);
+// console.log(`B737`[0]);
+
+//String Length
+// console.log(airline.length);
+// console.log(`B737`.length);
+
+//String Methods
+//First Index of Letter
+// console.log(airline.indexOf(`r`));
+//Last Index of Letter
+// console.log(airline.lastIndexOf(`r`));
+//Word Index
+// console.log(airline.indexOf(`Portugal`));
+
+//Slice Methods Return New String
+// console.log(airline.slice(4));
+// console.log(airline.slice(4, 7));
+
+// Slice First Word
+// console.log(airline.slice(0, airline.indexOf(` `)));
+
+//Slice Last Word
+// console.log(airline.slice(airline.lastIndexOf(` `) + 1));
+
+// Negative cut last
+// console.log(airline.slice(-2));
+// console.log(airline.slice(1, -1));
+
+// Example
+// const checkMiddleSeat = function (seat) {
+// B and E are Middle Seats
+//   const s = seat.slice(-1);
+//   if (s === `B` || s === `E`) {
+//     console.log(`You got the middle seat`);
+//   } else {
+//     console.log(`You got lucky`);
+//   }
+// };
+
+// checkMiddleSeat(`11B`);
+// checkMiddleSeat(`23C`);
+// checkMiddleSeat(`3E`);
+
+//JavaScript, convert a string to an object so methods work. When the method is done, convert it back to a string.
+// console.log(new String(`jonas`));
+// console.log(typeof new String(`Jonas`));
+// console.log(typeof new String(`jonas`).slice(1));
+
+// Assigment #15///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// 15.1
+// console.log(
+//   books[0].ISBN[6],
+//   books[0].ISBN[4],
+//   books[0].ISBN[9],
+//   books[0].ISBN[8]
+// );
+
+// 15.2
+// const quote =
+//   "A computer once beat me at chess, but it was no match for me at kick boxing";
+// console.log(quote.indexOf(`chess`));
+
+//15.3
+// console.log(quote.slice(quote.lastIndexOf(` `) + 1));
+
+//15.4
+//My Solution
+// function isContributor(author) {
+//   const contributorCheck = author.slice(author.lastIndexOf(` `) + 1);
+//   if (contributorCheck === "(Contributor)") {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// }
+//Jonas Solution
+// function isContributor(author) {
+//   return author.lastIndexOf("(Contributor)") !== -1;
+// }
+
+// console.log(isContributor("Julie Sussman (Contributor)"));
+// console.log(isContributor("Robert Sedgewick"));
+
+// Challenge #3////////////////////////////////////////////////////////////////////////////////////////////////////////
+// const gameEvents = new Map([
+//   [17, "⚽ GOAL"],
+//   [36, "� Substitution"],
+//   [47, "⚽ GOAL"],
+//   [61, "� Substitution"],
+//   [64, "� Yellow card"],
+//   [69, "� Red card"],
+//   [70, "� Substitution"],
+//   [72, "� Substitution"],
+//   [76, "⚽ GOAL"],
+//   [80, "⚽ GOAL"],
+//   [92, "� Yellow card"],
+// ]);
 
 //1. Create an array 'events' of the different game events that happened (no duplicates)
 //My Solution
@@ -609,7 +841,7 @@ const gameEvents = new Map([
 // const days = [`mon`, `tue`, `wed`, `thu`, `fri`, `sat`, `sun`];
 
 // for (const day of days) {
-//   // ?? because open at 0. If openinghourse doesnt exist print closed
+// ?? because open at 0. If openinghourse doesnt exist print closed
 //   const open = restaurant.openingHours[day]?.open ?? `closed`;
 //   console.log(`On ${day}, we open at ${open}`);
 // }
@@ -844,7 +1076,7 @@ const gameEvents = new Map([
 
 // const rest1 = {
 //   name: `Capri`,
-//   // numGuests: 20,
+// numGuests: 20,
 //   numGuests: 0,
 // };
 
@@ -937,7 +1169,7 @@ const gameEvents = new Map([
 // 5.1
 // function hasExamplesInJava(books) {
 //   console.log(books.programmingLanguage === `Java` || `no data available`);
-//   // return books.programmingLanguage === `Java` || `no data available`;
+// return books.programmingLanguage === `Java` || `no data available`;
 // }
 // hasExamplesInJava(books[0]);
 // hasExamplesInJava(books[1]);
