@@ -282,9 +282,187 @@ const restaurant = {
     console.log(otherIngredients);
   },
 };
+// Challenge #4
+// Write a program that receives a list of variable names written in underscore_case
+// and convert them to camelCase. The input will come from a textarea inserted into the DOM (see code below to
+// insert the elements), and conversion will happen when the button is pressed.
+
+// Test data (pasted to textarea, including spaces):
+// underscore_case
+//  first_name
+// Some_Variable
+//  calculate_AGE
+// delayed_departure
+
+// Should produce this output (5 separate console.log outputs):
+// underscoreCase ✅
+// firstName ✅✅
+// someVariable ✅✅✅
+// calculateAge ✅✅✅✅
+// delayedDeparture ✅✅✅✅✅
+// Hints:
+// § Remember which character defines a new line in the textarea �
+// § The solution only needs to work for a variable made out of 2 words, like a_b
+// § Start without worrying about the ✅. Tackle that only after you have the variable
+// name conversion working �
+// § This challenge is difficult on purpose, so start watching the solution in case
+// you're stuck. Then pause and continue!
+// Afterwards, test with your own test data!
+// GOOD LUCK �
+
+// My Solution
+// Tworzenie elementów
+// const textarea = document.createElement("textarea");
+// const button = document.createElement("button");
+// // Ustawienie tekstu na przycisku
+// button.textContent = "Prześlij";
+// // Dodanie elementów do dokumentu
+// document.body.append(textarea);
+// document.body.append(button);
+
+// // Dodanie obsługi zdarzenia click dla przycisku
+// let inputText = "";
+// button.addEventListener("click", () => {
+//   // Pobranie wartości z textarea
+//   inputText = textarea.value;
+//   // lowercase
+//   const lowerCase = inputText.toLowerCase();
+//   // Split
+//   const word = lowerCase.split(/[\n]/);
+
+//   for (const words of word) {
+//     // Trim All Words
+//     const trimmedWords = words.trim();
+//     // Create Array
+//     let capitalizeLetter = [];
+//     // Push to Array First Capitalize
+//     capitalizeLetter.push(
+//       trimmedWords.replace(trimmedWords[0], trimmedWords[0].toUpperCase())
+//     );
+//     for (let w of capitalizeLetter) {
+//       let indexUnderscore = w.indexOf(`_`);
+//       let replaceLetter =
+//         w.slice(0, indexUnderscore) +
+//         w[indexUnderscore + 1].toUpperCase() +
+//         w.slice(indexUnderscore + 2);
+//       console.log(replaceLetter);
+//     }
+//   }
+// });
+
+// Jonas Solution
+/*
+document.body.append(document.createElement('textarea'));
+document.body.append(document.createElement('button'));
+
+document.querySelector('button').addEventListener('click', function () {
+  const text = document.querySelector('textarea').value;
+  const rows = text.split('\n');
+
+  for (const [i, row] of rows.entries()) {
+    const [first, second] = row.toLowerCase().trim().split('_');
+
+    const output = `${first}${second.replace(
+      second[0],
+      second[0].toUpperCase()
+    )}`;
+    console.log(`${output.padEnd(20)}${'✅'.repeat(i + 1)}`);
+  }
+});
+*/
+
+// String #3///////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Split Method
+// console.log(`a+very+nice+string`.split(`+`));
+// console.log(`Jonas Schmedtmann`.split(` `));
+// const [firstName, lastName] = (`Jonas Schmedtmann`.split(` `));
+
+// // Join Method
+// const newName = [`Mr.`, firstName, lastName.toUpperCase()].join(' ');
+// console.log(newName);
+
+// // Capitalize First Letter Function
+// const capitalizeName = function(name) {
+//   const names = name.split(` `);
+//   const namesUpper = [];
+
+//   for (const n of names) {
+//     // Slice Method Capitalize
+//     // namesUpper.push(n[0].toUpperCase() + n.slice(1));
+//     // Replace Method Capitalize
+//     namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
+//   }
+//   console.log(namesUpper.join(` `));
+// }
+
+// capitalizeName(`jessica ann smith davis`)
+// capitalizeName(`jonas schmedtmann`)
+
+// // Padding
+// const message = `Go to gate 23!`;
+// // Pad Start
+// console.log(message.padStart(25, `+`));
+// console.log(`Jonas`.padStart(25, `+`));
+// // Pad End
+// console.log(message.padStart(25, `+`).padEnd(30, `+`));
+// console.log(`Jonas`.padStart(25, `+`).padEnd(30, `+`));
+
+// // Example
+// const maskCreditCard = function(number) {
+//   // Convert Number to String
+//   // const string = number + ``;
+//   const str = String(number);
+//   const last = str.slice(-4);
+//   return last.padStart(str.length, `*`);
+// }
+// console.log(maskCreditCard(`135314531512512`));
+// console.log(maskCreditCard(43344343345345));
+
+// // Repeat
+// const message2 = `Bad weather... All departures Delayed... `;
+// console.log(message2.repeat(5));
+// // Repeat Function
+// const planesInLine = function(n) {
+//   console.log(`The are ${n} planes in line ${`Plane`.repeat(n)}`);
+// }
+// planesInLine(5)
+
+// Assigment #17///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// 17.1
+// const bookCategories = 'science;computing;computer science;algorithms;business;operating systems;networking;electronics';
+// function logBookCategories (book){
+//   const bookArr = bookCategories.split(`;`);
+//   for (let book of bookArr) {
+//     console.log(book);
+//   }
+// }
+// logBookCategories(bookCategories);
+
+// 17.2
+// function getKeywordsAsString(book){
+//   let allKeywords = [];
+//   for (let book of books) {
+//     allKeywords.push(...book.keywords);
+//   }
+//   // Delete Duplicate and Convert to Array
+//   const keywordsSet = [...new Set(allKeywords)];
+//   // Join All Elements in Array to single String
+//   return keywordsSet.join(`;`);
+// };
+// console.log(getKeywordsAsString(books));
+
+// 17.3
+// const bookChapters = [['The Basics', 14], ['Sorting', 254], ['Searching', 372], ['Graphs', 526], ['Strings', 706]];
+// logBookChapters(bookChapters);
+
+// function logBookChapters (arr) {
+//   for (let [chapter, page] of bookChapters) {
+//     console.log(chapter.padEnd(20, `-`)+ ``+ page);
+//   }
+// }
 
 // String #2///////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 // Lower Case
 // console.log(airline.toLowerCase());
 // Uppercase
