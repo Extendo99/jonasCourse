@@ -1,326 +1,354 @@
 // "use strict";
 
-// Data needed for a later exercise
+// // Data needed for a later exercise
 // const flights =
-//   "_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30";
+//   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
-// Assigment Array Book //////////////////
-const books = [
-  {
-    title: "Algorithms",
-    author: ["Robert Sedgewick", "Kevin Wayne"],
-    publisher: "Addison-Wesley Professional",
-    publicationDate: "2011-03-24",
-    edition: 4,
-    keywords: [
-      "computer science",
-      "programming",
-      "algorithms",
-      "data structures",
-      "java",
-      "math",
-      "software",
-      "engineering",
-    ],
-    pages: 976,
-    format: "hardcover",
-    ISBN: "9780321573513",
-    language: "English",
-    programmingLanguage: "Java",
-    onlineContent: true,
-    thirdParty: {
-      goodreads: {
-        rating: 4.41,
-        ratingsCount: 1733,
-        reviewsCount: 63,
-        fiveStarRatingCount: 976,
-        oneStarRatingCount: 13,
-      },
-    },
-    highlighted: true,
-  },
-  {
-    title: "Structure and Interpretation of Computer Programs",
-    author: [
-      "Harold Abelson",
-      "Gerald Jay Sussman",
-      "Julie Sussman (Contributor)",
-    ],
-    publisher: "The MIT Press",
-    publicationDate: "2022-04-12",
-    edition: 2,
-    keywords: [
-      "computer science",
-      "programming",
-      "javascript",
-      "software",
-      "engineering",
-    ],
-    pages: 640,
-    format: "paperback",
-    ISBN: "9780262543231",
-    language: "English",
-    programmingLanguage: "JavaScript",
-    onlineContent: false,
-    thirdParty: {
-      goodreads: {
-        rating: 4.36,
-        ratingsCount: 14,
-        reviewsCount: 3,
-        fiveStarRatingCount: 8,
-        oneStarRatingCount: 0,
-      },
-    },
-    highlighted: true,
-  },
-  {
-    title: "Computer Systems: A Programmer's Perspective",
-    author: ["Randal E. Bryant", "David Richard O'Hallaron"],
-    publisher: "Prentice Hall",
-    publicationDate: "2002-01-01",
-    edition: 1,
-    keywords: [
-      "computer science",
-      "computer systems",
-      "programming",
-      "software",
-      "C",
-      "engineering",
-    ],
-    pages: 978,
-    format: "hardcover",
-    ISBN: "9780130340740",
-    language: "English",
-    programmingLanguage: "C",
-    onlineContent: false,
-    thirdParty: {
-      goodreads: {
-        rating: 4.44,
-        ratingsCount: 1010,
-        reviewsCount: 57,
-        fiveStarRatingCount: 638,
-        oneStarRatingCount: 16,
-      },
-    },
-    highlighted: true,
-  },
-  {
-    title: "Operating System Concepts",
-    author: ["Abraham Silberschatz", "Peter B. Galvin", "Greg Gagne"],
-    publisher: "John Wiley & Sons",
-    publicationDate: "2004-12-14",
-    edition: 10,
-    keywords: [
-      "computer science",
-      "operating systems",
-      "programming",
-      "software",
-      "C",
-      "Java",
-      "engineering",
-    ],
-    pages: 921,
-    format: "hardcover",
-    ISBN: "9780471694663",
-    language: "English",
-    programmingLanguage: "C, Java",
-    onlineContent: false,
-    thirdParty: {
-      goodreads: {
-        rating: 3.9,
-        ratingsCount: 2131,
-        reviewsCount: 114,
-        fiveStarRatingCount: 728,
-        oneStarRatingCount: 65,
-      },
-    },
-  },
-  {
-    title: "Engineering Mathematics",
-    author: ["K.A. Stroud", "Dexter J. Booth"],
-    publisher: "Palgrave",
-    publicationDate: "2007-01-01",
-    edition: 14,
-    keywords: ["mathematics", "engineering"],
-    pages: 1288,
-    format: "paperback",
-    ISBN: "9781403942463",
-    language: "English",
-    programmingLanguage: null,
-    onlineContent: true,
-    thirdParty: {
-      goodreads: {
-        rating: 4.35,
-        ratingsCount: 370,
-        reviewsCount: 18,
-        fiveStarRatingCount: 211,
-        oneStarRatingCount: 6,
-      },
-    },
-    highlighted: true,
-  },
-  {
-    title: "The Personal MBA: Master the Art of Business",
-    author: "Josh Kaufman",
-    publisher: "Portfolio",
-    publicationDate: "2010-12-30",
-    keywords: ["business"],
-    pages: 416,
-    format: "hardcover",
-    ISBN: "9781591843528",
-    language: "English",
-    thirdParty: {
-      goodreads: {
-        rating: 4.11,
-        ratingsCount: 40119,
-        reviewsCount: 1351,
-        fiveStarRatingCount: 18033,
-        oneStarRatingCount: 1090,
-      },
-    },
-  },
-  {
-    title: "Crafting Interpreters",
-    author: "Robert Nystrom",
-    publisher: "Genever Benning",
-    publicationDate: "2021-07-28",
-    keywords: [
-      "computer science",
-      "compilers",
-      "engineering",
-      "interpreters",
-      "software",
-      "engineering",
-    ],
-    pages: 865,
-    format: "paperback",
-    ISBN: "9780990582939",
-    language: "English",
-    thirdParty: {
-      goodreads: {
-        rating: 4.7,
-        ratingsCount: 253,
-        reviewsCount: 23,
-        fiveStarRatingCount: 193,
-        oneStarRatingCount: 0,
-      },
-    },
-  },
-  {
-    title: "Deep Work: Rules for Focused Success in a Distracted World",
-    author: "Cal Newport",
-    publisher: "Grand Central Publishing",
-    publicationDate: "2016-01-05",
-    edition: 1,
-    keywords: ["work", "focus", "personal development", "business"],
-    pages: 296,
-    format: "hardcover",
-    ISBN: "9781455586691",
-    language: "English",
-    thirdParty: {
-      goodreads: {
-        rating: 4.19,
-        ratingsCount: 144584,
-        reviewsCount: 11598,
-        fiveStarRatingCount: 63405,
-        oneStarRatingCount: 1808,
-      },
-    },
-    highlighted: true,
-  },
-];
+// // 🔴 Delayed Departure from FAO to TXL (11h25)
+// //              Arrival from BRU to FAO (11h45)
+// //   🔴 Delayed Arrival from HEL to FAO (12h05)
+// //            Departure from FAO to LIS (12h30)
 
-// Restaurant Array ///////////////////////////////////////////////////////////////////////////////////////////////////
-const weekdays = [`mon`, `tue`, `wed`, `thu`, `fri`, `sat`, `sun`];
 
-const openingHours = {
-  [weekdays[3]]: {
-    open: 12,
-    close: 22,
-  },
-  [weekdays[4]]: {
-    open: 11,
-    close: 23,
-  },
-  [weekdays[5]]: {
-    open: 0, // Open 24 hours
-    close: 24,
-  },
-};
+// let arrayFlights = flights.split(`+`);
 
-const restaurant = {
-  name: "Classico Italiano",
-  location: "Via Angelo Tavanti 23, Firenze, Italy",
-  categories: ["Italian", "Pizzeria", "Vegetarian", "Organic"],
-  starterMenu: ["Focaccia", "Bruschetta", "Garlic Bread", "Caprese Salad"],
-  mainMenu: ["Pizza", "Pasta", "Risotto"],
+// for (let flight of arrayFlights) {
+//   const [status, from, destination, time] = flight.split(`;`)
+//   // console.log(status, from, destination, time);
+//   let statusClean = status.replaceAll('_', " ").trim();
+//   // console.log(statusClean);
+  
+//   let fromClean = from.slice(0, 3).toUpperCase();
+//   // console.log(fromClean);
+  
+//   let destinationClean = destination.slice(0 , 3).toUpperCase();
+//   // console.log(destinationClean);
+  
+//   let timeClean = time.replace(`:`, `h`);
+//   // console.log(timeClean);
 
-  // ES6 Enchanced Object Literals
-  openingHours,
-  // Without Function Keyword
-  order(starterIndex, mainIndex) {
-    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
-  },
+//   console.log(`${statusClean.includes(`Delayed`) ? `🔴` : ""} ${statusClean} from ${fromClean} to ${destinationClean} (${timeClean})`.padStart(53));
+  
+// }
 
-  orderDelivery: function ({
-    starterIndex = 1,
-    mainIndex = 0,
-    time = `20:00`,
-    adress,
-  }) {
-    console.log(
-      `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${adress} at ${time}`
-    );
-  },
-  orderPasta: function (ing1, ing2, ing3) {
-    console.log(
-      `Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`
-    );
-  },
-  orderPizza: function (mainIngredient, ...otherIngredients) {
-    console.log(mainIngredient);
-    console.log(otherIngredients);
-  },
-};
-// Challenge #4
-// Write a program that receives a list of variable names written in underscore_case
-// and convert them to camelCase. The input will come from a textarea inserted into the DOM (see code below to
-// insert the elements), and conversion will happen when the button is pressed.
 
-// Test data (pasted to textarea, including spaces):
-// underscore_case
-//  first_name
-// Some_Variable
-//  calculate_AGE
-// delayed_departure
+//Assigment Array Book //////////////////
+// const books = [
+//   {
+//     title: "Algorithms",
+//     author: ["Robert Sedgewick", "Kevin Wayne"],
+//     publisher: "Addison-Wesley Professional",
+//     publicationDate: "2011-03-24",
+//     edition: 4,
+//     keywords: [
+//       "computer science",
+//       "programming",
+//       "algorithms",
+//       "data structures",
+//       "java",
+//       "math",
+//       "software",
+//       "engineering",
+//     ],
+//     pages: 976,
+//     format: "hardcover",
+//     ISBN: "9780321573513",
+//     language: "English",
+//     programmingLanguage: "Java",
+//     onlineContent: true,
+//     thirdParty: {
+//       goodreads: {
+//         rating: 4.41,
+//         ratingsCount: 1733,
+//         reviewsCount: 63,
+//         fiveStarRatingCount: 976,
+//         oneStarRatingCount: 13,
+//       },
+//     },
+//     highlighted: true,
+//   },
+//   {
+//     title: "Structure and Interpretation of Computer Programs",
+//     author: [
+//       "Harold Abelson",
+//       "Gerald Jay Sussman",
+//       "Julie Sussman (Contributor)",
+//     ],
+//     publisher: "The MIT Press",
+//     publicationDate: "2022-04-12",
+//     edition: 2,
+//     keywords: [
+//       "computer science",
+//       "programming",
+//       "javascript",
+//       "software",
+//       "engineering",
+//     ],
+//     pages: 640,
+//     format: "paperback",
+//     ISBN: "9780262543231",
+//     language: "English",
+//     programmingLanguage: "JavaScript",
+//     onlineContent: false,
+//     thirdParty: {
+//       goodreads: {
+//         rating: 4.36,
+//         ratingsCount: 14,
+//         reviewsCount: 3,
+//         fiveStarRatingCount: 8,
+//         oneStarRatingCount: 0,
+//       },
+//     },
+//     highlighted: true,
+//   },
+//   {
+//     title: "Computer Systems: A Programmer's Perspective",
+//     author: ["Randal E. Bryant", "David Richard O'Hallaron"],
+//     publisher: "Prentice Hall",
+//     publicationDate: "2002-01-01",
+//     edition: 1,
+//     keywords: [
+//       "computer science",
+//       "computer systems",
+//       "programming",
+//       "software",
+//       "C",
+//       "engineering",
+//     ],
+//     pages: 978,
+//     format: "hardcover",
+//     ISBN: "9780130340740",
+//     language: "English",
+//     programmingLanguage: "C",
+//     onlineContent: false,
+//     thirdParty: {
+//       goodreads: {
+//         rating: 4.44,
+//         ratingsCount: 1010,
+//         reviewsCount: 57,
+//         fiveStarRatingCount: 638,
+//         oneStarRatingCount: 16,
+//       },
+//     },
+//     highlighted: true,
+//   },
+//   {
+//     title: "Operating System Concepts",
+//     author: ["Abraham Silberschatz", "Peter B. Galvin", "Greg Gagne"],
+//     publisher: "John Wiley & Sons",
+//     publicationDate: "2004-12-14",
+//     edition: 10,
+//     keywords: [
+//       "computer science",
+//       "operating systems",
+//       "programming",
+//       "software",
+//       "C",
+//       "Java",
+//       "engineering",
+//     ],
+//     pages: 921,
+//     format: "hardcover",
+//     ISBN: "9780471694663",
+//     language: "English",
+//     programmingLanguage: "C, Java",
+//     onlineContent: false,
+//     thirdParty: {
+//       goodreads: {
+//         rating: 3.9,
+//         ratingsCount: 2131,
+//         reviewsCount: 114,
+//         fiveStarRatingCount: 728,
+//         oneStarRatingCount: 65,
+//       },
+//     },
+//   },
+//   {
+//     title: "Engineering Mathematics",
+//     author: ["K.A. Stroud", "Dexter J. Booth"],
+//     publisher: "Palgrave",
+//     publicationDate: "2007-01-01",
+//     edition: 14,
+//     keywords: ["mathematics", "engineering"],
+//     pages: 1288,
+//     format: "paperback",
+//     ISBN: "9781403942463",
+//     language: "English",
+//     programmingLanguage: null,
+//     onlineContent: true,
+//     thirdParty: {
+//       goodreads: {
+//         rating: 4.35,
+//         ratingsCount: 370,
+//         reviewsCount: 18,
+//         fiveStarRatingCount: 211,
+//         oneStarRatingCount: 6,
+//       },
+//     },
+//     highlighted: true,
+//   },
+//   {
+//     title: "The Personal MBA: Master the Art of Business",
+//     author: "Josh Kaufman",
+//     publisher: "Portfolio",
+//     publicationDate: "2010-12-30",
+//     keywords: ["business"],
+//     pages: 416,
+//     format: "hardcover",
+//     ISBN: "9781591843528",
+//     language: "English",
+//     thirdParty: {
+//       goodreads: {
+//         rating: 4.11,
+//         ratingsCount: 40119,
+//         reviewsCount: 1351,
+//         fiveStarRatingCount: 18033,
+//         oneStarRatingCount: 1090,
+//       },
+//     },
+//   },
+//   {
+//     title: "Crafting Interpreters",
+//     author: "Robert Nystrom",
+//     publisher: "Genever Benning",
+//     publicationDate: "2021-07-28",
+//     keywords: [
+//       "computer science",
+//       "compilers",
+//       "engineering",
+//       "interpreters",
+//       "software",
+//       "engineering",
+//     ],
+//     pages: 865,
+//     format: "paperback",
+//     ISBN: "9780990582939",
+//     language: "English",
+//     thirdParty: {
+//       goodreads: {
+//         rating: 4.7,
+//         ratingsCount: 253,
+//         reviewsCount: 23,
+//         fiveStarRatingCount: 193,
+//         oneStarRatingCount: 0,
+//       },
+//     },
+//   },
+//   {
+//     title: "Deep Work: Rules for Focused Success in a Distracted World",
+//     author: "Cal Newport",
+//     publisher: "Grand Central Publishing",
+//     publicationDate: "2016-01-05",
+//     edition: 1,
+//     keywords: ["work", "focus", "personal development", "business"],
+//     pages: 296,
+//     format: "hardcover",
+//     ISBN: "9781455586691",
+//     language: "English",
+//     thirdParty: {
+//       goodreads: {
+//         rating: 4.19,
+//         ratingsCount: 144584,
+//         reviewsCount: 11598,
+//         fiveStarRatingCount: 63405,
+//         oneStarRatingCount: 1808,
+//       },
+//     },
+//     highlighted: true,
+//   },
+// ];
 
-// Should produce this output (5 separate console.log outputs):
-// underscoreCase ✅
-// firstName ✅✅
-// someVariable ✅✅✅
-// calculateAge ✅✅✅✅
-// delayedDeparture ✅✅✅✅✅
-// Hints:
-// § Remember which character defines a new line in the textarea �
-// § The solution only needs to work for a variable made out of 2 words, like a_b
-// § Start without worrying about the ✅. Tackle that only after you have the variable
-// name conversion working �
-// § This challenge is difficult on purpose, so start watching the solution in case
-// you're stuck. Then pause and continue!
-// Afterwards, test with your own test data!
-// GOOD LUCK �
+//Restaurant Array ///////////////////////////////////////////////////////////////////////////////////////////////////
+// const weekdays = [`mon`, `tue`, `wed`, `thu`, `fri`, `sat`, `sun`];
+
+// const openingHours = {
+//   [weekdays[3]]: {
+//     open: 12,
+//     close: 22,
+//   },
+//   [weekdays[4]]: {
+//     open: 11,
+//     close: 23,
+//   },
+//   [weekdays[5]]: {
+//     open: 0, // Open 24 hours
+//     close: 24,
+//   },
+// };
+
+// const restaurant = {
+//   name: "Classico Italiano",
+//   location: "Via Angelo Tavanti 23, Firenze, Italy",
+//   categories: ["Italian", "Pizzeria", "Vegetarian", "Organic"],
+//   starterMenu: ["Focaccia", "Bruschetta", "Garlic Bread", "Caprese Salad"],
+//   mainMenu: ["Pizza", "Pasta", "Risotto"],
+
+//   // ES6 Enchanced Object Literals
+//   openingHours,
+//   // Without Function Keyword
+//   order(starterIndex, mainIndex) {
+//     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+//   },
+
+//   orderDelivery: function ({
+//     starterIndex = 1,
+//     mainIndex = 0,
+//     time = `20:00`,
+//     adress,
+//   }) {
+//     console.log(
+//       `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${adress} at ${time}`
+//     );
+//   },
+//   orderPasta: function (ing1, ing2, ing3) {
+//     console.log(
+//       `Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`
+//     );
+//   },
+//   orderPizza: function (mainIngredient, ...otherIngredients) {
+//     console.log(mainIngredient);
+//     console.log(otherIngredients);
+//   },
+// };
+//Challenge #4
+//Write a program that receives a list of variable names written in underscore_case
+//and convert them to camelCase. The input will come from a textarea inserted into the DOM (see code below to
+//insert the elements), and conversion will happen when the button is pressed.
+
+//Test data (pasted to textarea, including spaces):
+//underscore_case
+// first_name
+//Some_Variable
+// calculate_AGE
+//delayed_departure
+
+//Should produce this output (5 separate console.log outputs):
+//underscoreCase ✅
+//firstName ✅✅
+//someVariable ✅✅✅
+//calculateAge ✅✅✅✅
+//delayedDeparture ✅✅✅✅✅
+//Hints:
+//§ Remember which character defines a new line in the textarea �
+//§ The solution only needs to work for a variable made out of 2 words, like a_b
+//§ Start without worrying about the ✅. Tackle that only after you have the variable
+//name conversion working �
+//§ This challenge is difficult on purpose, so start watching the solution in case
+//you're stuck. Then pause and continue!
+//Afterwards, test with your own test data!
+//GOOD LUCK �
 
 // My Solution
 // Tworzenie elementów
 // const textarea = document.createElement("textarea");
 // const button = document.createElement("button");
-// // Ustawienie tekstu na przycisku
+//Ustawienie tekstu na przycisku
 // button.textContent = "Prześlij";
-// // Dodanie elementów do dokumentu
+//Dodanie elementów do dokumentu
 // document.body.append(textarea);
 // document.body.append(button);
 
-// // Dodanie obsługi zdarzenia click dla przycisku
+//Dodanie obsługi zdarzenia click dla przycisku
 // let inputText = "";
 // button.addEventListener("click", () => {
 //   // Pobranie wartości z textarea
@@ -377,11 +405,11 @@ document.querySelector('button').addEventListener('click', function () {
 // console.log(`Jonas Schmedtmann`.split(` `));
 // const [firstName, lastName] = (`Jonas Schmedtmann`.split(` `));
 
-// // Join Method
+//Join Method
 // const newName = [`Mr.`, firstName, lastName.toUpperCase()].join(' ');
 // console.log(newName);
 
-// // Capitalize First Letter Function
+//Capitalize First Letter Function
 // const capitalizeName = function(name) {
 //   const names = name.split(` `);
 //   const namesUpper = [];
@@ -398,16 +426,16 @@ document.querySelector('button').addEventListener('click', function () {
 // capitalizeName(`jessica ann smith davis`)
 // capitalizeName(`jonas schmedtmann`)
 
-// // Padding
+//Padding
 // const message = `Go to gate 23!`;
-// // Pad Start
+//Pad Start
 // console.log(message.padStart(25, `+`));
 // console.log(`Jonas`.padStart(25, `+`));
-// // Pad End
+//Pad End
 // console.log(message.padStart(25, `+`).padEnd(30, `+`));
 // console.log(`Jonas`.padStart(25, `+`).padEnd(30, `+`));
 
-// // Example
+//Example
 // const maskCreditCard = function(number) {
 //   // Convert Number to String
 //   // const string = number + ``;
@@ -418,10 +446,10 @@ document.querySelector('button').addEventListener('click', function () {
 // console.log(maskCreditCard(`135314531512512`));
 // console.log(maskCreditCard(43344343345345));
 
-// // Repeat
+//Repeat
 // const message2 = `Bad weather... All departures Delayed... `;
 // console.log(message2.repeat(5));
-// // Repeat Function
+//Repeat Function
 // const planesInLine = function(n) {
 //   console.log(`The are ${n} planes in line ${`Plane`.repeat(n)}`);
 // }
