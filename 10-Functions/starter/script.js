@@ -241,59 +241,46 @@
 // GOOD LUCK �
 
 // 1.1
-const poll = {
-  question: "What is your favourite programming language?",
-  options: ["0: JavaScript", "1: Python", "2: Rust", "3: C++"],
-  answers: new Array(4).fill(0), // Tablica wyników [0, 0, 0, 0]
+// const poll = {
+//   question: "What is your favourite programming language?",
+//   options: ["0: JavaScript", "1: Python", "2: Rust", "3: C++"],
+//   answers: new Array(4).fill(0), // Tablica wyników [0, 0, 0, 0]
+//   registerNewAnswer() {
+//     const answer = Number(
+//       prompt(
+//         `${this.question}\n${this.options.join(`\n`)}\n(Write option number)`
+//       )
+//     );
 
-  // 1. Metoda 'registerNewAnswer'
-  registerNewAnswer() {
-    // Wyświetlenie prompt z pytaniem i opcjami
-    const answer = Number(
-      prompt(
-        `${this.question}\n${this.options.join(`\n`)}\n(Write option number)`
-      )
-    );
+//     if (
+//       typeof answer === `number` &&
+//       answer >= 0 &&
+//       answer < this.answers.length
+//     ) {
+//       this.answers[answer] += 1;
+//     } else console.log(`Wrong Answer`);
 
-    // 1.2. Sprawdzenie poprawności odpowiedzi
-    if (answer >= 0 && answer < this.answers.length) {
-      this.answers[answer]++;
-    } else {
-      alert("Invalid input! Please enter a number between 0 and 3.");
-    }
+//     this.displayResults();
+//     this.displayResults("string");
+//   },
+//   displayResults(type = `array`) {
+//     if (type === `array`) {
+//       console.log(this.answers);
+//     } else if (type === `string`) {
+//       console.log(`Poll results are: ${this.answers.join(`, `)}`);
+//     }
+//   },
+// };
 
-    // Wyświetlanie wyników po dodaniu odpowiedzi
-    this.displayResults("array");
-    this.displayResults("string");
-  },
+// document
+//   .querySelector(`.poll`)
+//   .addEventListener(`click`, poll.registerNewAnswer.bind(poll));
 
-  // 3. Metoda 'displayResults'
-  displayResults(type = "array") {
-    if (type === `array`) {
-      console.log(this.answers);
-    } else if (type === `string`) {
-      console.log(`Poll results are ${this.answers.join(", ")}`);
-    } else {
-      console.log(`Wrong Type. Choose: array or string`);
-    }
-  },
-};
-
-// 2. Wywołanie metody 'registerNewAnswer' (wymaga akcji użytkownika)
-poll.registerNewAnswer();
-
-// 3. Wyświetlenie wyników na podstawie wyboru użytkownika
-const displayType = prompt(`string or array?`).toLowerCase();
-poll.displayResults(displayType);
-
-// BONUS
 // const data1 = [5, 2, 3];
 // const data2 = [1, 5, 3, 9, 6, 1];
 
-// // Wyświetlenie wyników dla data1 w obu formatach
 // poll.displayResults.call({ answers: data1 }, "array");
 // poll.displayResults.call({ answers: data1 }, "string");
 
-// // Wyświetlenie wyników dla data2 w obu formatach
 // poll.displayResults.call({ answers: data2 }, "array");
 // poll.displayResults.call({ answers: data2 }, "string");
