@@ -61,6 +61,7 @@ const inputLoanAmount = document.querySelector(".form__input--loan-amount");
 const inputCloseUsername = document.querySelector(".form__input--user");
 const inputClosePin = document.querySelector(".form__input--pin");
 
+// Display Movements
 const displayMovements = function (movements) {
   containerMovements.innerHTML = "";
 
@@ -80,6 +81,14 @@ const displayMovements = function (movements) {
 };
 displayMovements(account1.movements);
 
+// Display Balance
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${balance} EUR`;
+};
+
+calcDisplayBalance(account1.movements);
+
 // Convert User to Username = Initials
 const createUsernames = function (accs) {
   accs.forEach(function (acc) {
@@ -92,6 +101,7 @@ const createUsernames = function (accs) {
 };
 
 createUsernames(accounts);
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -206,27 +216,61 @@ createUsernames(accounts);
 //   console.log(`${value}: ${value}`)
 // });
 
-// Challenge #1
+// Challenge #1 && #2
 
-// const checkDogs = function (dogsJulia, dogsKate) {
-//   const dogsJuliaCorrected = dogsJulia.slice();
-//   dogsJuliaCorrected.splice(0, 1);
-//   dogsJuliaCorrected.splice(-2);
-//   console.log(dogsJuliaCorrected);
-//   const arr = dogsJuliaCorrected.concat(dogsKate);
-//   console.log(arr);
+const checkDogs = function (dogsJulia, dogsKate) {
+  const dogsJuliaCorrected = dogsJulia.slice();
+  dogsJuliaCorrected.splice(0, 1);
+  dogsJuliaCorrected.splice(-2);
+  console.log(dogsJuliaCorrected);
+  const arr = dogsJuliaCorrected.concat(dogsKate);
+  console.log(arr);
 
-//   arr.forEach(function (value, i) {
-//     if (value >= 3) {
-//       console.log(`Dog number ${i+1} is and adult, and is ${value} years old`)
-//     } else {
-//       console.log(`Dog number ${i+1} is still a puppy`)
-//     }
-//   })
-// };
+  arr.forEach(function (value, i) {
+    if (value >= 3) {
+      console.log(
+        `Dog number ${i + 1} is and adult, and is ${value} years old`
+      );
+    } else {
+      console.log(`Dog number ${i + 1} is still a puppy`);
+    }
+  });
+};
 
 // checkDogs( [3, 5, 2, 12, 7],  [4, 1, 15, 8, 3]);
 
+// const calcAverageHumanAge = function(ages){
+//   const dogAgeToHumanAge = ages.map(function(age) {
+//     if (age <= 2) return age * 2;
+//     else if (age > 2) return 16 + age * 4;
+//   })
+//   const above18 = dogAgeToHumanAge.filter(function(age){
+//     return age >= 18;
+//   })
+
+//   const above18Sum = above18.reduce(function(acc, age){
+//     return acc + age;
+//   })
+
+//   const averageHuman = above18Sum / above18.length;
+//   console.log(averageHuman);
+// };
+
+// calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3])
+// calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4])
+
+// Chat Gpt Solution Easier
+
+// const calcAverageHumanAge = function (ages) {
+//   const averageHuman = ages
+//     .map(age => (age <= 2 ? age * 2 : 16 + age * 4)) // Przelicz wiek psa na ludzki
+//     .filter(age => age >= 18) // Filtruj wartości ≥ 18
+//     .reduce((acc, age, _, arr) => acc + age / arr.length, 0); // Oblicz średnią
+//   console.log(averageHuman);
+// };
+
+// calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
+// calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
 // Map Method//////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
@@ -273,3 +317,27 @@ createUsernames(accounts);
 // const depositsFor = [];
 // for (const mov of movements) if (mov > 0) depositsFor.push(mov)
 //   console.log(depositsFor);
+
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+// console.log(movements);
+
+// // accumulator -> SNOWBALL
+// const balance = movements.reduce(function(acc, cur, i, arr) {
+//   return acc + cur;
+// }, 0);
+// console.log(balance);
+
+// // For Loop
+// let balance2 = 0;
+// for (const mov of movements) balance2 += mov;
+//   console.log(balance2)
+
+// Maximum value
+// const max = movements.reduce((acc, mov) => {
+//   if (acc > mov)
+//     return acc;
+//   else return mov;
+// }, movements[0])
+
+// console.log(max);
